@@ -25,7 +25,6 @@
             margin: 0 auto;
         }
 
-        /* ===== 主卡片 ===== */
         .card {
             background: #ffffff;
             border-radius: 16px;
@@ -34,67 +33,102 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* ===== 標頭 ===== */
-        .header {
+        /* ===== 標頭：共享家 + 智能矩陣系統（獨立區塊） ===== */
+        .header-top {
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 2px solid #e2e8f0;
             margin-bottom: 24px;
         }
 
-        .header .icon {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .header h1 {
-            font-size: 1.6rem;
-            color: #1e293b;
+        .header-top .brand {
+            font-size: 1.8rem;
             font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
             letter-spacing: 1px;
         }
 
-        .header .sub {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-top: 4px;
-        }
-
-        /* ===== 帳號資訊 ===== */
-        .account-info {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 10px;
-            padding: 16px 20px;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .account-info .label {
-            font-size: 0.85rem;
-            color: #475569;
-        }
-
-        .account-info .value {
+        .header-top .title-main {
             font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .btn-schedule {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 10px 28px;
+            background: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        }
+        .btn-schedule:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .btn-schedule:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== VPN 操作指南（獨立區塊） ===== */
+        .vpn-guide-block {
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-top: 0;
+        }
+
+        .vpn-guide-block .guide-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .vpn-guide-block .guide-sub {
+            color: #475569;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .vpn-guide-block .account-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding: 14px 0 18px 0;
+            border-top: 1px solid rgba(37, 99, 235, 0.12);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+        }
+
+        .vpn-guide-block .account-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+        }
+
+        .vpn-guide-block .account-item .label {
+            color: #475569;
+            font-weight: 400;
+        }
+
+        .vpn-guide-block .account-item .value {
             font-weight: 700;
             color: #2563eb;
             font-family: monospace;
             letter-spacing: 1px;
-        }
-
-        .account-info .row {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .account-info .row > div {
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         /* ===== 步驟 ===== */
@@ -106,6 +140,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-top: 6px;
         }
 
         .section-title .badge {
@@ -166,6 +201,31 @@
             color: #0f172a;
         }
 
+        /* ===== 藍底連結按鈕 ===== */
+        .btn-link-blue {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 6px 18px;
+            background: #2563eb;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+        }
+        .btn-link-blue:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        .btn-link-blue:active {
+            transform: scale(0.97);
+        }
+        .btn-link-blue i {
+            margin-right: 4px;
+        }
+
         .ip-badge {
             background: #dbeafe;
             color: #1e40af;
@@ -174,15 +234,6 @@
             font-family: monospace;
             font-weight: 700;
             font-size: 0.9rem;
-        }
-
-        .link-blue {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .link-blue:hover {
-            text-decoration: underline;
         }
 
         .status-connected {
@@ -258,12 +309,27 @@
             .card {
                 padding: 18px 16px;
             }
-            .header h1 {
-                font-size: 1.3rem;
+            .header-top .brand {
+                font-size: 1.4rem;
             }
-            .account-info .row {
+            .header-top .title-main {
+                font-size: 1.0rem;
+            }
+            .btn-schedule {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+            }
+            .btn-link-blue {
+                font-size: 0.75rem;
+                padding: 5px 14px;
+            }
+            .vpn-guide-block .account-row {
+                gap: 16px;
                 flex-direction: column;
-                gap: 4px;
+                align-items: center;
+            }
+            .vpn-guide-block .guide-title {
+                font-size: 1.1rem;
             }
             .step-item {
                 padding: 8px 0;
@@ -281,77 +347,90 @@
 
 <div class="container">
 
-    <!-- ===== 標頭 ===== -->
-    <div class="card header">
-        <span class="icon">📱</span>
-        <h1>共享家 VPN 操作指南</h1>
-        <div class="sub">手機端連線 · 帳號隔離保護</div>
+    <!-- ============================================================ -->
+    <!-- 區塊一：共享家 + 智能矩陣系統每週排程（獨立區塊）             -->
+    <!-- ============================================================ -->
+    <div class="card header-top">
+        <div class="brand">📱 共享家</div>
+        <div class="title-main">📋 智能矩陣系統每週排程</div>
+        <a href="https://reurl.cc/xe1jpz" target="_blank" class="btn-schedule">👉 請每週更新排程</a>
     </div>
 
-    <!-- ===== 帳號資訊 ===== -->
+    <!-- ============================================================ -->
+    <!-- 區塊二：手機端連線 VPN 操作指南（獨立區塊）                   -->
+    <!-- ============================================================ -->
     <div class="card">
-        <div class="account-info">
-            <div class="row">
-                <div>
+        <div class="vpn-guide-block">
+            <div class="guide-title">📋 手機端連線 VPN 操作指南</div>
+            <div class="guide-sub">帳號隔離保護 · 多帳號安全操作</div>
+
+            <div class="account-row">
+                <div class="account-item">
                     <span class="label">👤 帳號：</span>
                     <span class="value">user1</span>
                 </div>
-                <div>
+                <div class="account-item">
                     <span class="label">🔑 密碼：</span>
                     <span class="value">12345678</span>
                 </div>
             </div>
+
+            <!-- 操作步驟 -->
+            <div class="section-title">
+                🚀 操作步驟
+                <span class="badge">8 步驟</span>
+            </div>
+
+            <ol class="step-list">
+                <li class="step-item">
+                    <span class="step-num">1</span>
+                    <span class="step-text">
+                        點擊管理員提供的雲端（👉<strong>示範</strong> 資料夾）下載 <code>.ovpn</code> 設定檔。<br>
+                        <a href="https://reurl.cc/Z815XV" target="_blank" class="btn-link-blue">
+                            <i class="fa-solid fa-link"></i> 前往下載 .ovpn
+                        </a>
+                    </span>
+                </li>
+
+                <li class="step-item">
+                    <span class="step-num">2</span>
+                    <span class="step-text">至 App Store（iPhone）或 Google Play（Android）搜尋「<strong>OpenVPN Connect</strong>」並下載安裝。</span>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">3</span>
+                    <span class="step-text">點擊下載的設定檔 → 選擇「<strong>以 OpenVPN Connect 開啟</strong>」，系統將自動匯入。</span>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">4</span>
+                    <span class="step-text">打開 OpenVPN Connect，輸入您的帳號（<strong>user1</strong>）與密碼（<strong>12345678</strong>）。</span>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">5</span>
+                    <span class="step-text">點擊「連線」，等待狀態顯示為 <span class="status-connected">✅ CONNECTED</span>。</span>
+                </li>
+
+                <li class="step-item">
+                    <span class="step-num">6</span>
+                    <span class="step-text">
+                        前往 <a href="https://whatismyip.com" target="_blank" class="btn-link-blue">
+                            <i class="fa-solid fa-globe"></i> whatismyip.com
+                        </a>，確認 IP 已變更為 <span class="ip-badge">220.135.234.112</span>。
+                    </span>
+                </li>
+
+                <li class="step-item">
+                    <span class="step-num">7</span>
+                    <span class="step-text">打開應用程式 App（如 TikTok 等），即可正常操作。</span>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">8</span>
+                    <span class="step-text">操作完畢後，請務必手動斷開 OpenVPN Connect 連線。</span>
+                </li>
+            </ol>
         </div>
-
-        <!-- ===== 步驟 ===== -->
-        <div class="section-title">
-            🚀 操作步驟
-            <span class="badge">8 步驟</span>
-        </div>
-
-        <ol class="step-list">
-            <!-- ===== 步驟 1 (已修改) ===== -->
-            <li class="step-item">
-                <span class="step-num">1</span>
-                <span class="step-text">
-                    點擊管理員提供的雲端（👉<strong>示範</strong> 資料夾）下載 <code>.ovpn</code> 設定檔。<br>
-                    🔗 連結：<a href="https://reurl.cc/Z815XV" target="_blank" class="link-blue">https://reurl.cc/Z815XV</a>
-                </span>
-            </li>
-
-            <!-- ===== 步驟 2~8 ===== -->
-            <li class="step-item">
-                <span class="step-num">2</span>
-                <span class="step-text">至 App Store（iPhone）或 Google Play（Android）搜尋「<strong>OpenVPN Connect</strong>」並下載安裝。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">3</span>
-                <span class="step-text">點擊下載的設定檔 → 選擇「<strong>以 OpenVPN Connect 開啟</strong>」，系統將自動匯入。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">4</span>
-                <span class="step-text">打開 OpenVPN Connect，輸入您的帳號（<strong>user1</strong>）與密碼（<strong>12345678</strong>）。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">5</span>
-                <span class="step-text">點擊「連線」，等待狀態顯示為 <span class="status-connected">✅ CONNECTED</span>。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">6</span>
-                <span class="step-text">前往 <a href="https://whatismyip.com" target="_blank" class="link-blue">whatismyip.com</a>，確認 IP 已變更為 <span class="ip-badge">220.135.234.112</span>。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">7</span>
-                <span class="step-text">打開應用程式 App（如 TikTok 等），即可正常操作。</span>
-            </li>
-            <li class="step-item">
-                <span class="step-num">8</span>
-                <span class="step-text">操作完畢後，請務必手動斷開 OpenVPN Connect 連線。</span>
-            </li>
-        </ol>
     </div>
 
-    <!-- ===== 注意事項（警告） ===== -->
+    <!-- ===== 注意事項 ===== -->
     <div class="card card-warning">
         <div class="warning-title">⚠️ 注意事項（必讀）</div>
         <ol class="warning-list">
@@ -394,5 +473,7 @@
 
 </div>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </body>
 </html>

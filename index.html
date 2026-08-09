@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>共享家 VPN 操作指南</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f1f5f9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* ===== 主卡片 ===== */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== 標頭 ===== */
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 24px;
+        }
+
+        .header .icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            color: #1e293b;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header .sub {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        /* ===== 帳號資訊 ===== */
+        .account-info {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .account-info .label {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .account-info .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2563eb;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        .account-info .row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .account-info .row > div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== 步驟 ===== */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .badge {
+            background: #2563eb;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .step-item:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            background: #2563eb;
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-right: 14px;
+            margin-top: 1px;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+            padding-top: 1px;
+        }
+
+        .step-text code {
+            background: #e2e8f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .step-text strong {
+            color: #0f172a;
+        }
+
+        .ip-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .link-blue {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-blue:hover {
+            text-decoration: underline;
+        }
+
+        .status-connected {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* ===== 警告卡片 ===== */
+        .card-warning {
+            border-left: 5px solid #dc2626;
+            background: #fef2f2;
+        }
+
+        .card-warning .warning-title {
+            color: #dc2626;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .warning-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .warning-list li {
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+        }
+
+        .warning-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-red {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        /* ===== 保密宣告 ===== */
+        .card-confidential {
+            background: #f8fafc;
+            border: 2px dashed #94a3b8;
+            text-align: center;
+        }
+
+        .card-confidential .lock {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .card-confidential .title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+
+        .card-confidential p {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ===== RWD ===== */
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .account-info .row {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .step-item {
+                padding: 8px 0;
+            }
+            .step-text {
+                font-size: 0.88rem;
+            }
+            .warning-list li {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 標頭 ===== -->
+    <div class="card header">
+        <span class="icon">📱</span>
+        <h1>共享家 VPN 操作指南</h1>
+        <div class="sub">手機端連線 · 帳號隔離保護</div>
+    </div>
+
+    <!-- ===== 帳號資訊 ===== -->
+    <div class="card">
+        <div class="account-info">
+            <div class="row">
+                <div>
+                    <span class="label">👤 帳號：</span>
+                    <span class="value">user1</span>
+                </div>
+                <div>
+                    <span class="label">🔑 密碼：</span>
+                    <span class="value">12345678</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 步驟 ===== -->
+        <div class="section-title">
+            🚀 操作步驟
+            <span class="badge">8 步驟</span>
+        </div>
+
+        <ol class="step-list">
+            <li class="step-item">
+                <span class="step-num">1</span>
+                <span class="step-text">點擊管理員提供的雲端連結（Google Drive / iCloud）下載 <code>.ovpn</code> 設定檔。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">2</span>
+                <span class="step-text">至 App Store（iPhone）或 Google Play（Android）搜尋「<strong>OpenVPN Connect</strong>」並下載安裝。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">3</span>
+                <span class="step-text">點擊下載的設定檔 → 選擇「<strong>以 OpenVPN Connect 開啟</strong>」，系統將自動匯入。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">4</span>
+                <span class="step-text">打開 OpenVPN Connect，輸入您的帳號（<strong>user1</strong>）與密碼（<strong>12345678</strong>）。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">5</span>
+                <span class="step-text">點擊「連線」，等待狀態顯示為 <span class="status-connected">✅ CONNECTED</span>。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">6</span>
+                <span class="step-text">前往 <a href="https://whatismyip.com" target="_blank" class="link-blue">whatismyip.com</a>，確認 IP 已變更為 <span class="ip-badge">220.135.234.112</span>。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">7</span>
+                <span class="step-text">打開應用程式 App（如 TikTok 等），即可正常操作。</span>
+            </li>
+            <li class="step-item">
+                <span class="step-num">8</span>
+                <span class="step-text">操作完畢後，請務必手動斷開 OpenVPN Connect 連線。</span>
+            </li>
+        </ol>
+    </div>
+
+    <!-- ===== 注意事項（警告） ===== -->
+    <div class="card card-warning">
+        <div class="warning-title">⚠️ 注意事項（必讀）</div>
+        <ol class="warning-list">
+            <li>
+                <strong>VPN 務必先開：</strong><br>
+                每次操作帳號前，一定要先連線 VPN，確認 IP 是 <span class="ip-badge">220.135.234.112</span> 後，才能打開 App（TikTok 等）登入。
+            </li>
+            <li>
+                <strong class="highlight-red">順序不可顛倒：</strong><br>
+                嚴禁「先開 App 再開 VPN」，否則會暴露真實 IP，導致帳號被平台標記或關聯。
+            </li>
+            <li>
+                <strong>隔離保護失效風險：</strong><br>
+                若未依規定開啟 VPN 即登入帳號，帳號加密隔離機制將永久失效，可能造成多帳號被平台關聯或停權。
+            </li>
+            <li>
+                <strong>切換帳號必換 VPN（限擁有多組 VPN 帳號者）：</strong><br>
+                若您持有 2 個以上的加密隔離帳號，切換不同平台帳號時，必須先斷開目前 VPN，再連線新的 VPN 帳號，並確認 IP 正確後才能登入。（若僅持有 1 組 VPN 帳號，則無需執行此步驟）
+            </li>
+            <li>
+                <strong>連線狀態確認：</strong><br>
+                每次連線後，務必前往 whatismyip.com 確認 IP 為 <span class="ip-badge">220.135.234.112</span>，確認無誤再開始操作。
+            </li>
+            <li>
+                <strong>網域無限制：</strong><br>
+                本 VPN 連線不限制網域（無線、有線、熱點皆可），請安心操作。
+            </li>
+        </ol>
+    </div>
+
+    <!-- ===== 保密宣告 ===== -->
+    <div class="card card-confidential">
+        <span class="lock">🔒</span>
+        <div class="title">保密義務</div>
+        <p>
+            本操作手冊及相關設定資訊，僅限本人知悉使用，嚴禁外流、轉傳、複製或告知第三方。<br>
+            若因洩漏導致帳號隔離機制失效、帳號關聯或停權等一切損失，由使用者自行承擔全部責任，管理團隊不負任何賠償或恢復義務。
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

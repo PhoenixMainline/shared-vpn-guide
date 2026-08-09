@@ -340,6 +340,18 @@
             .warning-list li {
                 font-size: 0.85rem;
             }
+            /* 手機版按鈕組排列 */
+            .step-btn-group {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px !important;
+            }
+            .step-btn-group .btn-link-blue {
+                margin-top: 0 !important;
+            }
+            .step-btn-group .step-label {
+                margin-left: 0 !important;
+            }
         }
     </style>
 </head>
@@ -382,19 +394,26 @@
             </div>
 
             <ol class="step-list">
+                <!-- ===== 步驟 1（已修改：兩個小點，移除「或」） ===== -->
                 <li class="step-item">
                     <span class="step-num">1</span>
                     <span class="step-text">
-                        點擊管理員提供的雲端（👉<strong>示範</strong> 資料夾）下載 <code>.ovpn</code> 設定檔。<br>
-                        <a href="https://reurl.cc/Z815XV" target="_blank" class="btn-link-blue">
-                            <i class="fa-solid fa-link"></i> 前往下載 .ovpn
-                        </a>
+                        <div>(1) 點擊管理員提供的雲端（👉<strong>示範</strong> 資料夾）下載 <code>.ovpn</code> 設定檔。</div>
+                        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; align-items:center;" class="step-btn-group">
+                            <a href="https://reurl.cc/Z815XV" target="_blank" class="btn-link-blue">
+                                <i class="fa-solid fa-link"></i> 前往下載 .ovpn
+                            </a>
+                            <span style="color:#94a3b8; font-size:0.8rem; margin-left:4px;" class="step-label">(2)</span>
+                            <a href="https://reurl.cc/xe1jj4" target="_blank" class="btn-link-blue">
+                                <i class="fa-solid fa-video"></i> OpenVPN設定視頻
+                            </a>
+                        </div>
                     </span>
                 </li>
 
                 <li class="step-item">
                     <span class="step-num">2</span>
-                    <span class="step-text">至 App Store（iPhone）或 Google Play（Android）搜尋「<strong>OpenVPN Connect</strong>」並下載安裝。</span>
+                    <span class="step-text">手機至 App Store（iPhone）或 Google Play（Android）搜尋「<strong>OpenVPN Connect</strong>」並下載安裝。</span>
                 </li>
                 <li class="step-item">
                     <span class="step-num">3</span>
@@ -475,5 +494,6 @@
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </body>
 </html>

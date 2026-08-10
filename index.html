@@ -187,6 +187,7 @@
         .step-text {
             font-size: 0.95rem;
             padding-top: 1px;
+            flex: 1;
         }
 
         .step-text code {
@@ -325,6 +326,29 @@
             margin-top: 4px;
         }
 
+        /* ===== 步驟1 內嵌按鈕群組（flex 處理） ===== */
+        .step-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .step-btn-group .badge-step {
+            background: #dbeafe;
+            color: #1e40af;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .step-btn-group .btn-step1 {
+            flex-shrink: 0;
+        }
+
         /* ===== RWD ===== */
         @media (max-width: 640px) {
             body {
@@ -343,10 +367,6 @@
                 font-size: 0.85rem;
                 padding: 8px 18px;
             }
-            .btn-step1 {
-                font-size: 0.8rem;
-                padding: 6px 14px;
-            }
             .vpn-guide-block .account-row {
                 gap: 16px;
                 flex-direction: column;
@@ -357,9 +377,11 @@
             }
             .step-item {
                 padding: 8px 0;
+                flex-wrap: wrap;
             }
             .step-text {
                 font-size: 0.88rem;
+                width: 100%;
             }
             .warning-list li {
                 font-size: 0.85rem;
@@ -371,6 +393,11 @@
             }
             .step-btn-group .btn-step1 {
                 margin-top: 0 !important;
+                width: 100%;
+                text-align: center;
+            }
+            .step-btn-group .badge-step {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -381,11 +408,12 @@
 
     <!-- ============================================================ -->
     <!-- 區塊一：共享家 + 智能矩陣系統每週排程（獨立區塊）             -->
+    <!-- 連結已更新為 https://reurl.cc/rkL1Rk                         -->
     <!-- ============================================================ -->
     <div class="card header-top">
         <div class="brand">📱 共享家</div>
         <div class="title-main">📋 智能矩陣系統每週排程</div>
-        <a href="https://reurl.cc/aEaODX" target="_blank" class="btn-schedule">👉 請每週更新排程</a>
+        <a href="https://reurl.cc/rkL1Rk" target="_blank" class="btn-schedule">👉 請每週更新排程</a>
     </div>
 
     <!-- ============================================================ -->
@@ -414,18 +442,18 @@
             </div>
 
             <ol class="step-list">
-                <!-- ===== 步驟 1（已修改：清楚標示 (1) 和 (2) ） ===== -->
+                <!-- ===== 步驟 1（清楚標示 (1) 和 (2) ） ===== -->
                 <li class="step-item">
                     <span class="step-num">1</span>
                     <span class="step-text">
-                        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:2px; align-items:center;" class="step-btn-group">
-                            <span style="background:#dbeafe; color:#1e40af; font-weight:700; padding:2px 10px; border-radius:4px; font-size:0.8rem; margin-right:2px;">(1)</span>
+                        <div class="step-btn-group">
+                            <span class="badge-step">(1)</span>
                             <a href="https://reurl.cc/xe15l1" target="_blank" class="btn-step1">
                                 <i class="fa-solid fa-folder-open"></i> 點擊雲端連結（👉 示範 資料夾）下載 .ovpn 設定檔
                             </a>
                         </div>
-                        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; align-items:center;" class="step-btn-group">
-                            <span style="background:#dbeafe; color:#1e40af; font-weight:700; padding:2px 10px; border-radius:4px; font-size:0.8rem; margin-right:2px;">(2)</span>
+                        <div class="step-btn-group" style="margin-top:6px;">
+                            <span class="badge-step">(2)</span>
                             <a href="https://reurl.cc/EYXxjm" target="_blank" class="btn-step1">
                                 <i class="fa-solid fa-video"></i> 點擊雲端連結 OpenVPN 設定視頻
                             </a>
